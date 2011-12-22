@@ -14,6 +14,8 @@ Log Time
 This program logs the time usage of Mascot from the search logs and spits out a
 histogram.
 
+    $ PYTHONPATH=~/lib/python2.7/ log-time.py [[-f] searches.log]
+
 @todo 2011-12-20 11:40 JNS: write more detail
 
 """
@@ -90,7 +92,7 @@ mdl = ax2.plot(mddurs, 'g-')
 plt.xlabel('Time (hours)')
 ax1.set_ylabel('# searches')
 ax2.set_ylabel('mean of duration (secs)')
-ax2.legend([ml, mdl], ["mean duration", "median duration"])
+ax2.legend([ml, mdl], ["mean search duration", "median search duration"])
 plt.title(''.join(['Mascot search start time distribution across the day (',
                    time.strftime("%d/%b/%Y", first_date), 
                    ' - ', 
