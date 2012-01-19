@@ -69,7 +69,7 @@ for i in range(24):
 for log_entry in logs:
     hrs.append(log_entry.start.tm_hour)
     # append the duration by the hour it occured in
-    durs[log_entry.start.tm_hour].append(log_entry.duration)
+    durs[log_entry.start.tm_hour].append(float(log_entry.duration) / 60)
 
 # calculate the mean and median duration for each hour
 mdurs  = []
@@ -81,23 +81,26 @@ for idur in durs:
 
 # setup figure
 fig = plt.figure()
+# create a plot for the histogram
 ax1 = fig.add_subplot(111)
-# plot the histogram
+# plot the histogram on the subplot
 ax1.hist(hrs, bins=24)
-# plot the mean duration as a red line
+# create a subplot to overlay (for the purpose of creating a second y-axis)
+# plot the mean duration as a red line, and the median duration as a green line
 ax2 = ax1.twinx()
 ml  = ax2.plot(mdurs,'r-')
 mdl = ax2.plot(mddurs, 'g-')
 # label the figure
 plt.xlabel('Time (hours)')
 ax1.set_ylabel('# searches')
-ax2.set_ylabel('mean of duration (secs)')
-ax2.legend([ml, mdl], ["mean search duration", "median search duration"])
+ax2.set_ylabel('mean of duration (mins)')
 plt.title(''.join(['Mascot search start time distribution across the day (',
                    time.strftime("%d/%b/%Y", first_date), 
                    ' - ', 
                    time.strftime("%d/%b/%Y", last_date), ')']))
-# re-define the x-limitations
+# add a legend
+ax2.legend([ml, mdl], ["mean search duration", "median search duration"])
+# re-define the limits of the x-axis
 plt.xlim(0, 23)
 # show the histogram
 plt.show()
