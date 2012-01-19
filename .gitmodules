@@ -1,0 +1,3 @@
+[submodule "proteomics"]
+	path = proteomics
+	url = git@github.com:slyeel/python2.7-proteomics-lib.git
