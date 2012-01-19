@@ -9,6 +9,15 @@ provides information regarding usage. The software is written in Python
 https://github.com/slyeel/python2.7-proteomics-lib, via 'git' which has been
 used for version control.
 
+In order to use the software, you will either require the proteomics library in
+the current directory, or run it with the location of the library defined.
+That is providing the library has not been placed in a global site-packages
+directory.
+
+EXAMPLE:
+  PYTHONLIB=~/lib/python2.7/ python ./log-time.py searches.log
+_______________________________________________________________________________
+
 ./log-time.py
 -------------
 This program uses the logs to determine when the Mascot server is under load.
