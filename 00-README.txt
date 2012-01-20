@@ -2,17 +2,21 @@
 mascot_reader
 =============
 
-This software analyses the logs from Matrix Science's Mascot software, and
-provides information regarding usage. The software is written in Python
-(version 2.7) and is documented in the code. The software depends on the
-'proteomics.mascot' library written by the same author, and available from
-https://github.com/slyeel/python2.7-proteomics-lib, via 'git' which has been
-used for version control.
+This software analyses the logs from Matrix Science's Mascot software,
+and provides information regarding usage. The software is written in
+Python (version 2.7) and is documented in the code (you should be able
+to use something like 'epydoc' to pull it out). The software depends
+on the 'proteomics.mascot' library written by the same author, and
+available from https://github.com/slyeel/python2.7-proteomics-lib, via
+'git' which has been used for version control. The library has been
+linked as a sub-module, so it is possible the code hasn't downloaded
+(it's present in the 'proteomics/' folder (or directory). To download
+it, either go to the URL or if you are using 'git' then run the
+command 'git submodule update --init'.
 
-In order to use the software, you will either require the proteomics library in
-the current directory, or run it with the location of the library defined.
-That is providing the library has not been placed in a global site-packages
-directory.
+If the library is not downloaded as a sub-module or has not been
+placed in the global site-packages, then you may need to direct python
+to where the library can be found, as in the example:
 
 EXAMPLE:
   PYTHONLIB=~/lib/python2.7/ python ./log-time.py searches.log
